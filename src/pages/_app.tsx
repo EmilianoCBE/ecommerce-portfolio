@@ -19,7 +19,7 @@ export const buttonTheme = defineStyleConfig({
 })
 
 import '@fontsource/spartan/400.css'
-import '@fontsourc e/spartan/700.css'
+import '@fontsource/spartan/700.css'
 
 const theme = extendTheme({
   colors:{
