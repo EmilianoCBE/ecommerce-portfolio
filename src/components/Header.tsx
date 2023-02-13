@@ -5,7 +5,7 @@ import { Box, Flex } from '@chakra-ui/react'
 
 export function Header() {
   return (
-    <Flex w="100%" as="header" justifyContent='space-between' border="solid 2px" borderColor="gray.100">
+    <Flex w="100%" as="header" justifyContent='space-between' borderBottom="solid 2px" borderColor="gray.100">
         <Box margin="1rem 0">
             <Image src="/logo.svg" alt="" width={100} height={48} />
         </Box>
