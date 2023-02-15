@@ -1,1 +1,1 @@
-export type Categories = "electronics" | "jewelry" | "men's clothing" | "women's clothing"
+export type Categories = "electronics" | "jewelery" | "men's clothing" | "women's clothing"
