@@ -33,7 +33,7 @@ export type Product = {
 type Props ={
   products: Product[],
   categories: Categories[],
-  groupProductsByCategory: GroupedProducts
+  productsGroupedByCategory: GroupedProducts
 }
 
 
