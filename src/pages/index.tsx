@@ -37,7 +37,7 @@ type Props ={
 }
 
 
-export default function Home({products, categories, groupProductsByCategory}: Props) {
+export default function Home({products, categories, productsGroupedByCategory}: Props) {
   return (
     <>
       <Head>
@@ -65,7 +65,7 @@ export default function Home({products, categories, groupProductsByCategory}: Pr
           base: '100%',
           md: '1110px'
         }}>
-          {Object.entries(groupProductsByCategory).map(([category, products])=>{
+          {Object.entries(productsGroupedByCategory).map(([category, products])=>{
             return (
                 <Box key={category} marginBottom='4rem'>
                   <Heading 
