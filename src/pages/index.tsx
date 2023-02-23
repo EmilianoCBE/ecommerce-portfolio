@@ -8,8 +8,10 @@ import { AdvantageSection } from '@/components/AdvantageSection'
 
 import { Categories } from '@/models/Categories'
 
-import { Box, Container, Flex, Grid, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Container, Flex, Grid, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { ProductCard } from '@/components/ProductCard'
+import { GroupedProducts, groupProductsByCategory } from '@/utils/groupProductsByCategory'
+import { HomeProductsGrid } from '@/components/HomeProductsGrid'
 
 export type Product = {
   id: number,
@@ -27,10 +29,12 @@ export type Product = {
 
 type Props ={
   products: Product[],
-  categories: Categories[]
+  categories: Categories[],
+  groupProductsByCategory: GroupedProducts
 }
 
-export default function Home({products, categories}: Props) {
+
+export default function Home({products, categories, groupProductsByCategory}: Props) {
   return (
     <>
       <Head>
@@ -58,38 +62,24 @@ export default function Home({products, categories}: Props) {
           base: '100%',
           md: '1110px'
         }}>
-          <Grid 
-              overflowX='scroll'
-              gridTemplateColumns={{
-                base: 'repeat(auto-fit, 255px)',
-                md: 'repeat(auto-fill, minmax(255px, 1fr))' 
-              }}
-              gridAutoColumns='255px'
-              gridAutoRows='1fr'
-              gridAutoFlow={{
-                base: 'column',
-                md: 'row'
-              }}
-              gap='1.85rem'
-              scrollSnapType='x mandatory'
-              alignItems='stretch'
-            >
-            {products.map((product,i) => {
-              return <Box 
-                        marginLeft={{
-                          base: i === 0? '1rem' : '0',
-                          md: '0'
-                        }}
-                        key={product.id} 
-                        scrollSnapAlign='center' 
-                        border='solid 1px' 
-                        borderColor='gray.200' 
-                        padding='1rem'
-                      >
-                      <ProductCard {...product}/>
-                     </Box>
-            })}
-          </Grid> 
+          {Object.entries(groupProductsByCategory).map(([category, products])=>{
+            return (
+                <Box key={category} marginBottom='4rem'>
+                  <Heading 
+                    as='h2' 
+                    size='md' 
+                    textTransform='uppercase' m={{
+                      base: '0 0 1rem 1rem',
+                      md: '0 0 1.5rem'
+                    }}
+                  >
+                    {category}
+                  </Heading>
+                  <HomeProductsGrid products={products}/>
+                </Box>
+              )
+            })
+          }
         </Container>
         
       </main>
@@ -104,11 +94,14 @@ export async function getServerSideProps(context: GetServerSideProps){
   const categories = await fetch("https://fakestoreapi.com/products/categories")
     .then(res => res.json())
 
+  const productsGroupedByCategory = groupProductsByCategory(products)
+
 
   return {
     props: {
       products,
-      categories
+      categories,
+      productsGroupedByCategory
     }
   }
 }
