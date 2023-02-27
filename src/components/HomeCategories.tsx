@@ -5,7 +5,7 @@ import { CenteredLabel } from "./CenteredLabel";
 import { slugify } from "@/utils/sluglify";
 import { Categories } from "@/models/Categories";
 
-import { Grid, GridItem, GridItemProps } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, GridItemProps } from "@chakra-ui/react";
 
 type Props = {
   categories: Categories[]
@@ -41,7 +41,9 @@ export function HomeCategories({categories}: Props) {
                 return (
                     <GridItem fontSize={{base: '0.85rem', sm: '1rem'}} position='relative' w='100%' h='100%' gridArea={`cat${index + 1}`} key={index}>
                         <Image src={imageUrl} fill={true} alt={cat} style={{objectFit: 'cover'}}/>
-                        <CenteredLabel>{cat}</CenteredLabel>
+                        <Flex display="flex" alignItems="center" justifyContent="center" height="100%">
+                            <CenteredLabel>{cat}</CenteredLabel>
+                        </Flex>
                     </GridItem>
                 );
             })
