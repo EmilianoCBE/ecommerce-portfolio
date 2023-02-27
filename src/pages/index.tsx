@@ -8,7 +8,7 @@ import { AdvantageSection } from '@/components/AdvantageSection'
 
 import { Categories } from '@/models/Categories'
 
-import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Button, Container, FormControl, FormHelperText, FormLabel, Grid, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
 import { GroupedProducts, groupProductsByCategory } from '@/utils/groupProductsByCategory'
 import { HomeProductsGrid } from '@/components/HomeProductsGrid'
 import Image from 'next/image'
@@ -107,6 +107,41 @@ export default function Home({products, categories, productsGroupedByCategory}: 
                 </Text>
             </PromoBanner>
           </SimpleGrid>
+        </Container>
+
+        <Container bg='linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%)'
+          m='2rem 0' 
+          p='1.5rem'
+          maxWidth='100%'
+        >
+          <Box maxWidth='33rem' m='auto' as='article' bgColor='white' p='2rem' >
+            <Grid maxWidth='22rem' m='auto' gap='2rem' textAlign='center'>
+              <header>
+                <Heading size='sm' textTransform='uppercase' color='gray'>
+                  Special Offer
+                </Heading>
+                <Heading size='xl' textTransform='uppercase'>
+                  Subscribe and {' '}
+                  <Text as='span' color='red'> get 10% off</Text>
+                </Heading>
+              </header>
+              <Grid as='form' action=''gap='1.5rem'>
+                <FormControl>
+                  {/* <FormLabel>Email address</FormLabel> */}
+                  <Input 
+                    height='4rem'
+                    textAlign='inherit' 
+                    borderRadius='0' 
+                    type='email' 
+                    placeholder='Enter your email' 
+                    bgColor='gray.700'/>
+                </FormControl>
+                <Button bgColor='black' height='4rem' w='100%' size='lg' >
+                  Subscribe
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
         </Container>
       </main>
     </>
