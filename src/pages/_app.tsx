@@ -4,16 +4,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 import { extendTheme } from '@chakra-ui/react'
 
-import {defineStyle, defineStyleConfig} from '@chakra-ui/react'
+import { defineStyleConfig} from '@chakra-ui/react'
 
-const sizes = {
-  lg: defineStyle({
-    maxW: '1110px',
-    p: 0
-  }),
-}
-
-export const containerTheme = defineStyleConfig({ sizes })
 
 export const buttonTheme = defineStyleConfig({
   baseStyle: {
@@ -49,7 +41,11 @@ const theme = extendTheme({
   },
   components: {
     Button: buttonTheme,
-    Container: containerTheme
+    Container: {
+      baseStyle:{
+        maxW: '71.375rem',
+      }
+    }
   }
 })
 
