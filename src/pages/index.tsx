@@ -8,15 +8,17 @@ import { AdvantageSection } from '@/components/AdvantageSection'
 
 import { Categories } from '@/models/Categories'
 
-import { Box, Button, Container, FormControl, FormHelperText, FormLabel, Grid, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, FormControl, FormHelperText, FormLabel, Grid, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
 import { GroupedProducts, groupProductsByCategory } from '@/utils/groupProductsByCategory'
 import { HomeProductsGrid } from '@/components/HomeProductsGrid'
 import Image from 'next/image'
 
 import bannerSeason from '/public/banner-new-season.jpg'
 import bannerSale from '/public/banner-sale.jpg'
-import { CenteredLabel } from '@/components/CenteredLabel'
 import {PromoBanner} from '@/components/PromoBanner'
+
+import menWalking from '/public/men-walking.png'
+import womanStanding from '/public/woman-standing.png'
 
 export type Product = {
   id: number,
@@ -107,11 +109,18 @@ export default function Home({products, categories, productsGroupedByCategory}: 
 
         <Container bg='linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%)'
           m='2rem 0' 
-          p='1.5rem'
+          p='3.5rem'
           maxWidth='100%'
+          position='relative'
         >
-          <Box maxWidth='33rem' m='auto' as='article' bgColor='white' p='2rem' >
-            <Grid maxWidth='22rem' m='auto' gap='2rem' textAlign='center'>
+          <Box position='absolute' right='50%' transform='translateX(470px)'>
+            <Image src={menWalking} alt=''/>
+          </Box>
+          <Box position='absolute' bottom='0' left='50%' transform='translateX(-530px)'>
+            <Image src={womanStanding} alt=''/>
+          </Box>
+          <Flex height='28.75rem' maxWidth='33.25rem' m='auto' as='article' bgColor='white' p='2rem' >
+            <Grid maxWidth='21.25rem' m='auto' gap='2rem' textAlign='center'>
               <header>
                 <Heading size='sm' textTransform='uppercase' color='gray'>
                   Special Offer
@@ -132,12 +141,12 @@ export default function Home({products, categories, productsGroupedByCategory}: 
                     placeholder='Enter your email' 
                     bgColor='gray.100'/>
                 </FormControl>
-                <Button bgColor='black' height='4rem' w='100%' size='lg' >
+                <Button size='xl' >
                   Subscribe
                 </Button>
               </Grid>
             </Grid>
-          </Box>
+          </Flex>
         </Container>
       </main>
     </>
