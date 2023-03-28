@@ -1,14 +1,12 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
-import { Header } from '@/components/Header'
-import { TopBar } from '@/components/TopBar'
 import { HomeCategories } from '@/components/HomeCategories'
 import { AdvantageSection } from '@/components/AdvantageSection'
 
 import { Categories } from '@/models/Categories'
 
-import { Box, Button, Container, Flex, FormControl, FormHelperText, FormLabel, Grid, Heading, Input, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { GroupedProducts, groupProductsByCategory } from '@/utils/groupProductsByCategory'
 import { HomeProductsGrid } from '@/components/HomeProductsGrid'
 
@@ -16,12 +14,13 @@ import bannerSeason from '/public/banner-new-season.jpg'
 import bannerSale from '/public/banner-sale.jpg'
 import {PromoBanner} from '@/components/PromoBanner'
 import { SubscribeSection } from '@/components/SubscribeSection'
-import Image from 'next/image'
 import { BlogCard } from '@/components/BlogCard'
 
 import blogPic1 from '/public/blog-pic-01.jpg'
 import blogPic2 from '/public/blog-pic-02.jpg'
 import blogPic3 from '/public/blog-pic-03.jpg'
+import { TopBar } from '@/components/TopBar'
+import { Header } from '@/components/Header'
 
 export type Product = {
   id: number,
@@ -52,11 +51,7 @@ export default function Home({products, categories, productsGroupedByCategory}: 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-        <TopBar />
-        <Box marginBottom="2rem">
-          <Header />
-        </Box>  
+ 
       <main>
         <Container>
           <HomeCategories categories={categories}/>
