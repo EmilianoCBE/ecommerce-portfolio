@@ -8,7 +8,7 @@ import { Categories } from '@/models/Categories'
 
 import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { GroupedProducts, groupProductsByCategory } from '@/utils/groupProductsByCategory'
-import { HomeProductsGrid } from '@/components/HomeProductsGrid'
+import { ProductsGrid } from '@/components/ProductsGrid'
 
 import bannerSeason from '/public/banner-new-season.jpg'
 import bannerSale from '/public/banner-sale.jpg'
@@ -77,7 +77,7 @@ export default function Home({products, categories, productsGroupedByCategory}: 
                   >
                     {category}
                   </Heading>
-                  <HomeProductsGrid products={products}/>
+                  <ProductsGrid products={products}/>
                 </Box>
               )
             })
