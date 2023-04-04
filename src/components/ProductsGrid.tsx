@@ -35,7 +35,7 @@ export function ProductsGrid(props: Props) {
                                     borderColor='gray.200' 
                                     padding='1rem'
                                 >
-                                    <Link href={`/product/${slug}-${product.id}`}>
+                                    <Link href={`/products/${slug}-${product.id}`}>
                                         <ProductCard {...product} />
                                     </Link>
                                 </Box>;

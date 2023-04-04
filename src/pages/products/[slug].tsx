@@ -26,7 +26,7 @@ function Price({price}: {price: number}) {
 }
 
 export default function Product({product, relatedProducts}:Props) {
-    const {price, category, description, image} = product
+    const {price, description, image} = product
     const [showPrice, setShowPrice] = useState(false)
 
     useEffect(() => {
@@ -119,7 +119,7 @@ export async function getStaticPaths() {
     const products = await fetch("https://fakestoreapi.com/products").then(res => res.json())
 
     const slugs: string[] = products.map((product: ProductModel) => {
-      return `${slugify(product.title)}-${slugify(product.id)}`
+      return `${slugify(product.title)}-${product.id}`
     });
 
     return {
@@ -141,7 +141,7 @@ export async function getStaticPaths() {
     })
 
     const relatedProducts = products.filter((item: ProductModel) => {
-      return item.category === product?.category && item.id === product?.id
+      return item.category === product?.category && item.id !== product?.id;
     })
 
     return {
